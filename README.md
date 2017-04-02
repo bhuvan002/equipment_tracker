@@ -1,4 +1,4 @@
-# Ruby on Rails Tutorial sample application
+# Equipment Tracker
 
 This is the sample application for the Equipment Tracker.
 
