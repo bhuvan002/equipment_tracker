@@ -6,7 +6,15 @@
     <% if equipment.approved %>
       <td><span class="label label-success">Approved</span></td>
     <% else %>
-      <td><span class="label label-danger">Not Approved</span></td>
+      <td>
+        <span class="label label-danger">Not Approved</span>
+        <% if is_super_user? %>
+          <%= simple_form_for equipment do |f| %>
+            <%= f.input :approved, as: :hidden, input_html: { value: 'true' } %>
+            <%= f.button :submit, 'Approve request', class: 'btn btn-xs' %>
+          <% end %>
+        <% end %>
+      </td>
     <% end %>
   <% else %>
     <td><%= equipment.location %></td>

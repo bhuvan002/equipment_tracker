@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
       store_manager_path(resource)
     elsif resource.type == 'LabOwner'
       lab_owner_path(resource)
+    elsif resource.type == 'SuperUser'
+      super_user_path(resource)
     else
       user_path(resource)
     end

@@ -18,6 +18,13 @@
               <li>
               <%= link_to('Logout', destroy_store_manager_session_path, :method => :delete) %>  
               </li>
+            <% elsif user_signed_in? && current_user.type == 'SuperUser' %>
+              <li>
+                <%= link_to('Dashboard', super_user_path(current_user)) %>  
+              </li>
+              <li>
+              <%= link_to('Logout', destroy_super_user_session_path, :method => :delete) %>  
+              </li>
             <% else %>
               <li>
               <%= link_to('Login', new_user_session_path)  %>  

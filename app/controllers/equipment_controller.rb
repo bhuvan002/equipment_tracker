@@ -12,6 +12,15 @@ class EquipmentController < ApplicationController
     end
   end
 
+  def update
+    byebug
+    @equipment = Equipment.find(params[:id])
+    @equipment.update_attributes(equipment_params)
+    @equipment.save
+    redirect_to user_dashboard
+  end
+
+
   def index
     @equipment = Equipment.where(request: false).paginate(page: params[:page])
   end
@@ -28,6 +37,8 @@ class EquipmentController < ApplicationController
         store_manager_path(current_user)
       elsif current_user.type == 'LabOwner'
         lab_owner_path(current_user)
+      elsif current_user.type == 'SuperUser'
+        super_user_path(current_user)
       end
     end
 end

@@ -8,4 +8,8 @@ module ApplicationHelper
       title = "#{name} | #{base_title}"
     end
   end
+
+  def is_super_user?
+    user_signed_in? && current_user.type == 'SuperUser'
+  end
 end
