@@ -4,15 +4,17 @@
         <nav>
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "Home",   '#' %></li>
-            <% if user_signed_in? %>
+            <% if user_signed_in? && current_user.type == 'LabOwner' %>
               <li>
-              <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+                <%= link_to('Dashboard', lab_owner_path(current_user)) %>  
               </li>
-            <% elsif lab_owner_signed_in? %>
               <li>
-              <%= link_to('Logout', destroy_lab_owner_session_path, :method => :delete) %>  
+                <%= link_to('Logout', destroy_lab_owner_session_path, :method => :delete) %>  
               </li>
-            <% elsif store_manager_signed_in? %>
+            <% elsif user_signed_in? && current_user.type == 'StoreManager' %>
+              <li>
+                <%= link_to('Dashboard', store_manager_path(current_user)) %>  
+              </li>
               <li>
               <%= link_to('Logout', destroy_store_manager_session_path, :method => :delete) %>  
               </li>

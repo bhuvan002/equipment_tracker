@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'equipments/create'
+
   # devise_scope :user do
   #   get '/sign_in', to: 'devise/sessions#new'
   #   get '/sign_up', to: 'devise/registrations#new', as: 'new_user_registration'
@@ -10,5 +12,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :store_managers, only: [:show]
   resources :lab_owners, only: [:show]
+
+  resources :equipment, only: [:create, :index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
