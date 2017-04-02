@@ -21,12 +21,17 @@ class EquipmentController < ApplicationController
 
 
   def index
-    @equipment = Equipment.where(request: false).paginate(page: params[:page])
+    if (current_user.type == 'LabOwner')
+      @equipment = current_user.equipment.where(request: false).paginate(page: params[:page])
+    else
+      @equipment = Equipment.where(request: false).paginate(page: params[:page])
+    end
   end
 
   private
     def equipment_params
-      params.require(:equipment).permit(:model, :kind, :request, :approved, :location)
+      params.require(:equipment).permit(:model, :kind, :request, :approved, :location,
+      :lab_owner_id)
     end
 
     def user_dashboard
