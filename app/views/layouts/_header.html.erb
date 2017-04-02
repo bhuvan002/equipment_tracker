@@ -8,6 +8,14 @@
               <li>
               <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
               </li>
+            <% elsif lab_owner_signed_in? %>
+              <li>
+              <%= link_to('Logout', destroy_lab_owner_session_path, :method => :delete) %>  
+              </li>
+            <% elsif store_manager_signed_in? %>
+              <li>
+              <%= link_to('Logout', destroy_store_manager_session_path, :method => :delete) %>  
+              </li>
             <% else %>
               <li>
               <%= link_to('Login', new_user_session_path)  %>  
