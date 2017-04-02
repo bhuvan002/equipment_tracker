@@ -1,0 +1,3 @@
+class LabOwner < User
+
+end
