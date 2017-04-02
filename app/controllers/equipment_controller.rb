@@ -13,7 +13,6 @@ class EquipmentController < ApplicationController
   end
 
   def update
-    byebug
     @equipment = Equipment.find(params[:id])
     @equipment.update_attributes(equipment_params)
     @equipment.save
