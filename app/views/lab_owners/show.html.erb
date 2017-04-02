@@ -1,1 +1,7 @@
-Lab owner page
+<h2>Request New Equipment</h2>
+<%= simple_form_for @equipment do |f| %>
+  <%= f.input :model %>
+  <%= f.input :kind %>
+  <%= f.input :request, as: :hidden, input_html: { value: 'true' } %>
+  <%= f.button :submit %>
+<% end %>

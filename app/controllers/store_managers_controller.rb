@@ -4,5 +4,6 @@ class StoreManagersController < ApplicationController
   def show
     @store_manager = StoreManager.find(params[:id])
     @equipment = Equipment.new
+    @requests = Equipment.where(request: true).paginate(page: params[:page])
   end
 end

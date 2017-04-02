@@ -1,5 +1,28 @@
-<%= simple_form_for @equipment do |f| %>
-  <%= f.input :model %>
-  <%= f.input :kind %>
-  <%= f.button :submit %>
-<% end %>
+
+<h1>All requests</h1>
+<div class="row">
+    <div class="col-md-3">
+      <%= simple_form_for @equipment do |f| %>
+        <%= f.input :model %>
+        <%= f.input :kind %>
+        <%= f.input :location %>
+        <%= f.button :submit, 'Add new equipment' %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+        <%= will_paginate @requests %>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Model</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%= render @requests %>
+            </tbody>
+        <%= will_paginate @requests %>
+    </div>
+</div>

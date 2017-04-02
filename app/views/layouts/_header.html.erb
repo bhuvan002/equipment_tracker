@@ -3,7 +3,7 @@
         <%= link_to "Equipment Tracker", '#', id: "logo" %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Home",   '#' %></li>
+            <li><%= link_to "Home", root_path %></li>
             <% if user_signed_in? && current_user.type == 'LabOwner' %>
               <li>
                 <%= link_to('Dashboard', lab_owner_path(current_user)) %>  

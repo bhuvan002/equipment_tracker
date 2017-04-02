@@ -2,4 +2,13 @@
   <th scope="row"><%= equipment.id %></th>
   <td><%= equipment.model %></td>
   <td><%= equipment.kind %></td>
+  <% if equipment.request %>
+    <% if equipment.approved %>
+      <td><span class="label label-success">Approved</span></td>
+    <% else %>
+      <td><span class="label label-danger">Not Approved</span></td>
+    <% end %>
+  <% else %>
+    <td><%= equipment.location %></td>
+  <% end %>
 </tr>
