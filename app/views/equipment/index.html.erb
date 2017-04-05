@@ -1,6 +1,9 @@
 <h1>All equipment</h1>
 <div class="row">
-    <div class="col-md-offset-3 col-md-6">
+    <div class="col-md-3">
+    <img id="barcode" role="img" alt="Click on the barcode number to see the barcode"></img>
+    </div>
+    <div class="col-md-6">
         <%= will_paginate %>
         <table class="table table-hover">
             <thead>
@@ -12,8 +15,13 @@
                 </tr>
             </thead>
             <tbody>
-                <%= render @equipment %>
+                <%= render @equipment || "No equipment found" %>
             </tbody>
         <%= will_paginate %>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <%= debug(@equipment) %>
     </div>
 </div>
