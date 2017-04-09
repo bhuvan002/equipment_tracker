@@ -10,17 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170402203417) do
+ActiveRecord::Schema.define(version: 20170409205523) do
 
   create_table "equipment", force: :cascade do |t|
     t.string   "model"
     t.string   "kind"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "location"
-    t.boolean  "request",      default: false
-    t.boolean  "approved",     default: false
+    t.boolean  "request",         default: false
     t.integer  "lab_owner_id"
+    t.string   "status",          default: "OK"
+    t.string   "warranty_status", default: "OK"
+    t.string   "approved",        default: "Pending"
     t.index ["lab_owner_id"], name: "index_equipment_on_lab_owner_id"
   end
 

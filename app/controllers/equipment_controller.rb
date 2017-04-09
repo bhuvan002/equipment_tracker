@@ -13,6 +13,7 @@ class EquipmentController < ApplicationController
   end
 
   def update
+    byebug
     @equipment = Equipment.find(params[:id])
     @equipment.update_attributes(equipment_params)
     @equipment.save
@@ -31,7 +32,7 @@ class EquipmentController < ApplicationController
   private
     def equipment_params
       params.require(:equipment).permit(:model, :kind, :request, :approved, :location,
-      :lab_owner_id)
+      :lab_owner_id, :status, :warranty_status)
     end
 
     def user_dashboard
