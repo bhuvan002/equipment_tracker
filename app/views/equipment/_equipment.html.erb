@@ -3,6 +3,7 @@
   <td><%= equipment.model %></td>
   <td><%= equipment.kind %></td>
   <% if equipment.request %>
+    <td><%= equipment.lab_owner.id %></td>
     <% if equipment.approved == 'Approved' %>
       <td><span class="label label-success">Approved</span></td>
     <% elsif equipment.approved == 'Pending' %>

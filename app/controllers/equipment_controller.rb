@@ -2,7 +2,12 @@ class EquipmentController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @equipment = Equipment.create(equipment_params)
+    eq_params = equipment_params
+    if (LabOwner.find_by(id: eq_params[:lab_owner_id]))
+      lab_owner = LabOwner.find(eq_params[:lab_owner_id]);
+      eq_params[:location] ||= lab_owner.lab
+    end
+    @equipment = Equipment.create(eq_params)
     if @equipment.save
       flash[:success] = "Equipment added successfully"
       redirect_to user_dashboard
@@ -13,7 +18,6 @@ class EquipmentController < ApplicationController
   end
 
   def update
-    byebug
     @equipment = Equipment.find(params[:id])
     @equipment.update_attributes(equipment_params)
     @equipment.save

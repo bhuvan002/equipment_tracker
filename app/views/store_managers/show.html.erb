@@ -5,7 +5,6 @@
       <%= simple_form_for @equipment do |f| %>
         <%= f.input :model %>
         <%= f.input :kind %>
-        <%= f.input :location %>
         <%= f.input :lab_owner_id %>
         <%= f.button :submit, 'Add new equipment' %>
       <% end %>
@@ -18,6 +17,7 @@
                     <th>#</th>
                     <th>Model</th>
                     <th>Type</th>
+                    <th>Lab Owner ID</th>
                     <th>Status</th>
                 </tr>
             </thead>
