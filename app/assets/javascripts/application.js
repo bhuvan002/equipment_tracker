@@ -12,6 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables
 //= require turbolinks
 //= require JsBarcode.code128.min
 //= require_tree .
+
+
+document.addEventListener("turbolinks:load", function() {
+    $('#equipment-table').DataTable({
+        "paging": false,
+        "searching": false
+    });
+})
