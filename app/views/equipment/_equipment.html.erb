@@ -1,5 +1,5 @@
 <tr>
-  <th scope="row" class="display_barcode"><%= equipment.id %></th>
+  <th scope="row" class="display_barcode"><%= link_to equipment.id, equipment_path(equipment.id)%></th>
   <td><%= equipment.model %></td>
   <td><%= equipment.kind %></td>
   <% if equipment.request %>

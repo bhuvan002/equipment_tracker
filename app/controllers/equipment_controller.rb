@@ -24,6 +24,11 @@ class EquipmentController < ApplicationController
     redirect_to user_dashboard
   end
 
+  def show
+    @equipment = Equipment.find(params[:id])
+    @location_histories = @equipment.location_histories.order(created_at: :desc)
+  end
+
 
   def index
     if (current_user.type == 'LabOwner')

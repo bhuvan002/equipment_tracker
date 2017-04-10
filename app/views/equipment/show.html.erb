@@ -1,0 +1,67 @@
+<h1>View Equipment</h1>
+<div class="row">
+    <div class="col-md-3">
+        Insert Barcode Here
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h3 class="panel-title">Model</h3></div>
+            <div class="panel-body">
+                <%= @equipment.model %>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading"><h3 class="panel-title">Type</h3></div>
+            <div class="panel-body">
+                <%= @equipment.kind %>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading"><h3 class="panel-title">Location</h3></div>
+            <div class="panel-body">
+                <%= @equipment.location %>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h3 class="panel-title">Status</h3></div>
+                    <div class="panel-body">
+                        <% if @equipment.status == 'OK' %>
+                            <span class="label label-success">OK</span>
+                        <% else %>
+                            <span class="label label-danger">Not OK</span>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h3 class="panel-title">Warranty Status</h3></div>
+                    <div class="panel-body">
+                        <% if @equipment.warranty_status == 'OK' %>
+                            <span class="label label-success">In Warranty</span>
+                        <% else %>
+                            <span class="label label-warning">Not in warranty</span>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h3 class="panel-title">Location History</h3></div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <%= render @location_histories %>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

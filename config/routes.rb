@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   resources :lab_owners, only: [:show]
   resources :super_users, only: [:show]
 
-  resources :equipment, only: [:create, :index, :update]
+  resources :equipment, only: [:create, :index, :update, :show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
