@@ -15,3 +15,14 @@
 //= require turbolinks
 //= require JsBarcode.code128.min
 //= require_tree .
+document.addEventListener("turbolinks:load", function() {
+	var barcode;
+	console.log("In document.ready");
+	if ($("#equipment_id").length > 0) {
+		console.log("Found id!");
+		barcode = $("#equipment_id").text();
+		console.log("barcode" + barcode);
+		$('#show_barcode').JsBarcode(barcode);
+	}
+	return null;
+})
