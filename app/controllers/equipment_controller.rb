@@ -10,6 +10,9 @@ class EquipmentController < ApplicationController
     @equipment = Equipment.create(eq_params)
     if @equipment.save
       flash[:success] = "Equipment added successfully"
+      if !@equipment.location.blank?
+        @equipment.location_histories.create(location: @equipment.location)
+      end
       redirect_to user_dashboard
     else
       flash[:danger] = "Equipment could not be added"

@@ -1,5 +1,11 @@
 <tr>
-  <th scope="row" class="display_barcode"><%= link_to equipment.id, equipment_path(equipment.id)%></th>
+  <th scope="row" class="display_barcode">
+    <% if equipment.request %>
+      <%= equipment.id %>
+    <% else %>
+      <%= link_to equipment.id, equipment_path(equipment.id) %>
+    <% end %>
+  </th>
   <td><%= equipment.model %></td>
   <td><%= equipment.kind %></td>
   <% if equipment.request %>
