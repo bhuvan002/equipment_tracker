@@ -26,6 +26,7 @@ document.addEventListener("turbolinks:load", function() {
 		$('#show_barcode').JsBarcode(barcode);
 	}
 	return null;
+})
 
 
 document.addEventListener("turbolinks:load", function() {
