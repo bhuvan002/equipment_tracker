@@ -10,7 +10,6 @@
       <% end %>
     </div>
     <div class="col-md-6">
-        <%= will_paginate @requests %>
         <table class="table table-hover" id="equipment-table">
             <thead>
                 <tr>
@@ -24,6 +23,6 @@
             <tbody>
                 <%= render @requests %>
             </tbody>
-        <%= will_paginate @requests %>
+        </table>
     </div>
 </div>

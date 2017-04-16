@@ -27,11 +27,3 @@ document.addEventListener("turbolinks:load", function() {
 	}
 	return null;
 })
-
-
-document.addEventListener("turbolinks:load", function() {
-    $('#equipment-table').DataTable({
-        "paging": false,
-        "searching": false
-    });
-})

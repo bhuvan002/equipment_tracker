@@ -3,6 +3,6 @@ class SuperUsersController < ApplicationController
 
   def show
     @store_manager = SuperUser.find(params[:id])
-    @requests = Equipment.where(request: true).paginate(page: params[:page])
+    @requests = Equipment.where(request: true)
   end
 end

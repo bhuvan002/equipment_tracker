@@ -35,9 +35,9 @@ class EquipmentController < ApplicationController
 
   def index
     if (current_user.type == 'LabOwner')
-      @equipment = current_user.equipment.where(request: false).paginate(page: params[:page])
+      @equipment = current_user.equipment.where(request: false)
     else
-      @equipment = Equipment.where(request: false).paginate(page: params[:page])
+      @equipment = Equipment.where(request: false)
     end
   end
 
