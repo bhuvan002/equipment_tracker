@@ -1,0 +1,54 @@
+<tr class="display-request-info">
+  <th scope="row">
+      <%= link_to move_request.equipment.id, equipment_path(move_request.equipment.id) %>
+  </th>
+  <td><%= move_request.from_id %></td>
+  <td><%= move_request.to_id %></td>
+  <% if move_request.hod_approved == 'Approved' %>
+      <td>
+        <span class="label label-success">Approved</span>
+      </td>
+    <% elsif move_request.hod_approved == 'Pending' %>
+      <td>
+        <span class="label label-warning">Pending</span>
+        <% if is_super_user? %>
+          <%= simple_form_for move_request do |f| %>
+            <%= f.input :hod_approved, as: :hidden, input_html: { value: 'Approved' } %>
+            <%= f.button :submit, 'Approve', class: 'btn btn-xs' %>
+          <% end %>
+          <%= simple_form_for move_request do |f| %>
+            <%= f.input :hod_approved, as: :hidden, input_html: { value: 'Rejected' } %>
+            <%= f.button :submit, 'Reject', class: 'btn btn-xs' %>
+          <% end %>
+        <% end %>
+      </td>
+    <% else %>
+      <td>
+        <span class="label label-danger">Rejected</span>
+      </td>
+    <% end %>
+
+    <% if move_request.to_approved == 'Approved' %>
+      <td>
+        <span class="label label-success">Approved</span>
+      </td>
+    <% elsif move_request.to_approved == 'Pending' %>
+      <td>
+        <span class="label label-warning">Pending</span>
+        <% if is_lab_owner? && current_user.id == move_request.to_id%>
+          <%= simple_form_for move_request do |f| %>
+            <%= f.input :to_approved, as: :hidden, input_html: { value: 'Approved' } %>
+            <%= f.button :submit, 'Approve', class: 'btn btn-xs' %>
+          <% end %>
+          <%= simple_form_for move_request do |f| %>
+            <%= f.input :to_approved, as: :hidden, input_html: { value: 'Rejected' } %>
+            <%= f.button :submit, 'Reject', class: 'btn btn-xs' %>
+          <% end %>
+        <% end %>
+      </td>
+    <% else %>
+      <td>
+        <span class="label label-danger">Rejected</span>
+      </td>
+    <% end %>
+</tr>

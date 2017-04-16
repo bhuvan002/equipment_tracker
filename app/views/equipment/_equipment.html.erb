@@ -9,7 +9,9 @@
   <td><%= equipment.model %></td>
   <td><%= equipment.kind %></td>
   <% if equipment.request %>
-    <td><%= equipment.lab_owner.id %></td>
+    <% unless is_lab_owner? %>
+      <td><%= equipment.lab_owner.id %></td>
+    <% end %>
     <% if equipment.approved == 'Approved' %>
       <td>
         <span class="label label-success">Approved</span>
@@ -51,5 +53,15 @@
     <% else %>
       <td><span class="label label-warning">Not in warranty</span></td>
     <% end %>
+    <% if is_lab_owner? %>
+      <td>
+        <%= simple_form_for @move_request do |f|%>
+          <%= f.input :to_id, disabled: equipment.in_transit, input_html: { class: 'input-sm' }%>
+          <%= f.input :equipment_id, as: :hidden, input_html: { value: equipment.id } %>
+          <%= f.button :submit, 'Submit', class: 'btn btn-xs', disabled: equipment.in_transit %>
+        <% end %>
+      </td>
+    <% end %>
   <% end %>
+  <!--td>Move equipment</td-->
 </tr>

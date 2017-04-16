@@ -16,4 +16,8 @@ module ApplicationHelper
   def is_store_manager?
     user_signed_in? && current_user.type == 'StoreManager'
   end
+
+  def is_lab_owner?
+    user_signed_in? && current_user.type == 'LabOwner'
+  end
 end

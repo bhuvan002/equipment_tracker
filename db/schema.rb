@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170410071845) do
+ActiveRecord::Schema.define(version: 20170416220816) do
 
   create_table "equipment", force: :cascade do |t|
     t.string   "model"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20170410071845) do
     t.string   "status",          default: "OK"
     t.string   "warranty_status", default: "OK"
     t.string   "approved",        default: "Pending"
+    t.boolean  "in_transit",      default: false
     t.index ["lab_owner_id"], name: "index_equipment_on_lab_owner_id"
   end
 
@@ -32,6 +33,19 @@ ActiveRecord::Schema.define(version: 20170410071845) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["equipment_id"], name: "index_location_histories_on_equipment_id"
+  end
+
+  create_table "move_requests", force: :cascade do |t|
+    t.integer  "equipment_id"
+    t.integer  "from_id"
+    t.integer  "to_id"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "hod_approved", default: "Pending"
+    t.string   "to_approved",  default: "Pending"
+    t.index ["equipment_id"], name: "index_move_requests_on_equipment_id"
+    t.index ["from_id"], name: "index_move_requests_on_from_id"
+    t.index ["to_id"], name: "index_move_requests_on_to_id"
   end
 
   create_table "users", force: :cascade do |t|

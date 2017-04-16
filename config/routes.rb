@@ -11,9 +11,11 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
   resources :store_managers, only: [:show]
-  resources :lab_owners, only: [:show]
+  resources :lab_owners, only: [:show, :index]
   resources :super_users, only: [:show]
 
   resources :equipment, only: [:create, :index, :update, :show]
+  
+  resources :move_requests, only: [:create, :update]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

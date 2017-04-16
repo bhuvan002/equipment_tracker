@@ -4,5 +4,6 @@ class SuperUsersController < ApplicationController
   def show
     @store_manager = SuperUser.find(params[:id])
     @requests = Equipment.where(request: true)
+    @move_requests = MoveRequest.all
   end
 end
