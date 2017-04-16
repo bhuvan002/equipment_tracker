@@ -4,4 +4,4 @@
 
 
 $(document).on 'turbolinks:load', ->
-   $('#equipment-table').DataTable();
+   $('#equipment-table').DataTable() if $('#equipment-table').length > 0;
