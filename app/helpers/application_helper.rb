@@ -12,4 +12,8 @@ module ApplicationHelper
   def is_super_user?
     user_signed_in? && current_user.type == 'SuperUser'
   end
+
+  def is_store_manager?
+    user_signed_in? && current_user.type == 'StoreManager'
+  end
 end
