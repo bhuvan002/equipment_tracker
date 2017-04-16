@@ -42,7 +42,7 @@
       </td>
     <% end %>
   <% else %>
-    <td><%= equipment.location %></td>
+    <td><%= equipment.lab_owner.lab %></td>
     <% if equipment.status == 'OK' %>
       <td><span class="label label-success">OK</span></td>
     <% else %>
