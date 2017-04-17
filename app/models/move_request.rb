@@ -7,6 +7,9 @@ class MoveRequest < ApplicationRecord
     if to_approved == 'Approved' && hod_approved == 'Approved'
       equipment.update_attributes(lab_owner_id: to_id, in_transit: false)
       equipment.save
+    elsif to_approved == 'Rejected' || hod_approved == 'Rejected'
+      equipment.update_attributes(in_transit: false)
+      equipment.save
     end
   end
 end

@@ -20,6 +20,7 @@ class MoveRequestsController < ApplicationController
     @move_request.update_attributes(move_request_params)
     @move_request.save
     @move_request.move_equipment
+    @move_request.equipment.update_location_history
     redirect_to user_dashboard
   end
 
