@@ -18,7 +18,15 @@ class EquipmentController < ApplicationController
     @equipment.update_attributes(equipment_params)
     @equipment.save
     @equipment.update_location_history
-    redirect_to user_dashboard
+    if !@equipment.request?
+      redirect_to equipment_path(@equipment)
+    else
+      redirect_to user_dashboard
+    end
+  end
+
+  def edit
+    @equipment = Equipment.find(params[:id])
   end
 
   def show

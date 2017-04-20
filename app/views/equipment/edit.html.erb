@@ -1,0 +1,15 @@
+<h1>View Equipment</h1>
+<div class="row">
+    <div class="col-md-3">
+        <p id="equipment_id" hidden=true><%= @equipment.id %></p>
+        <!-- Insert Barcode Here -->
+        <img id="show_barcode" role="img" alt="The barcode"></img>
+    </div>
+    <div class="col-md-6">
+        <%= simple_form_for @equipment do |f| %>
+            <%= f.input :warranty_status, collection: [ "OK", "Not OK"] %>
+             <%= f.input :status, collection: [ "OK", "Not OK" ] %>
+            <%= f.button :submit %>
+        <% end %>
+    </div>
+</div>
