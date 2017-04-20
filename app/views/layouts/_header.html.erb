@@ -9,6 +9,9 @@
                 <%= link_to('All Equipment', equipment_index_path) %>
               </li>
               <li>
+                <%= link_to 'Labs', lab_owners_path %>
+              </li>
+              <li>
                 <%= link_to('Dashboard', lab_owner_path(current_user)) %>  
               </li>
               <li>
@@ -19,6 +22,9 @@
                 <%= link_to('All Equipment', equipment_index_path) %>
               </li>
               <li>
+                <%= link_to 'Labs', lab_owners_path %>
+              </li>
+              <li>
                 <%= link_to('Dashboard', store_manager_path(current_user)) %>  
               </li>
               <li>
@@ -27,6 +33,9 @@
             <% elsif user_signed_in? && current_user.type == 'SuperUser' %>
               <li>
                 <%= link_to('Dashboard', super_user_path(current_user)) %>  
+              </li>
+              <li>
+                <%= link_to 'Labs', lab_owners_path %>
               </li>
               <li>
               <%= link_to('Logout', destroy_super_user_session_path, :method => :delete) %>  
